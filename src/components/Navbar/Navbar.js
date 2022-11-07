@@ -1,12 +1,14 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
+import {RiUserAddFill} from 'react-icons/ri'
 
 const Navbar = () => {
   return (
-    <header>
-      <nav>
-        {/* Brand Logo */}
+    <header className="mb-10">
+      <nav className={`flex justify-between items-center p-5 bg-red-600`}>
+        {/* Brand Logo / Text */}
         <div>
-            <img src="" alt="" />
+           <NavLink to={'/'} className={`text-4xl font-russo text-[#FF4F5A]`}><span className={`text-[#8758FF]`}>A</span> Accountant</NavLink>
         </div>
 
         {/* Route NavLink */}
@@ -15,6 +17,7 @@ const Navbar = () => {
 
         {/* User Profile */}
         <div>
+          <RiUserAddFill className="text-2xl cursor-pointer"></RiUserAddFill>
         </div>
       </nav>
     </header>
