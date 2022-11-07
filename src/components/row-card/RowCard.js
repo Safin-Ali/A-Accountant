@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import LoadingAnim from '../spinner/LoadingAnim';
 
 
 function CardDesign({data}){
@@ -13,7 +14,7 @@ function CardDesign({data}){
     </div>
     {/* Services Content */}
     <div className={`flex items-center flex-col text-center`}>
-        <h5 className={`mb-2 text-2xl font-bold tracking-tight`}>{service_name}</h5>
+        <h5 className={`mb-2 text-2xl font-bold tracking-tight capitalize`}>{service_name}</h5>
         <p className={`mb-3 font-normal`}>{service_des.slice(0,100)}</p>
     </div>
         </div>
@@ -23,7 +24,7 @@ function CardDesign({data}){
 const RowCard = () => {
     
     // get servoces data
-    const[srvcData,setSrvcData] = useState([]);
+    const[srvcData,setSrvcData] = useState(null);
 
     useEffect(()=>{
         fetch(`http://localhost:5000/`)
@@ -34,7 +35,9 @@ const RowCard = () => {
     return (
         <div className={`mt-10 container mx-auto`}>
             {
-                srvcData.map(elm => <CardDesign key={elm._id} data={elm}></CardDesign>)
+                
+                srvcData?.map(elm => <CardDesign key={elm._id} data={elm}></CardDesign>)
+                || <div className={`text-center mb-10`}><LoadingAnim></LoadingAnim></div>
             }
         </div>
     );

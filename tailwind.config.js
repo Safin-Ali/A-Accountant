@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       fontFamily: {
         russo: ['Russo One', 'sans-serif'],
-    },
-    },
+      },
+    }
   },
   plugins: [],
 }
