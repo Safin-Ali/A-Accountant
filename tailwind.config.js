@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         russo: ['Russo One', 'sans-serif'],
       },
+      colors:{
+        Default: '#F1F4F6',
+      }
     }
   },
   plugins: [],
