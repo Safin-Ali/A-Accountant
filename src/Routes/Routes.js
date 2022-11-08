@@ -1,9 +1,11 @@
+import { async } from '@firebase/util';
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Login from '../components/form/Login';
 import ReviewForm from '../components/form/ReviewForm';
 import Signup from '../components/form/Signup';
 import ReviewCard from '../components/review-card/ReviewCard';
+import BlogPage from '../pages/Blog/BlogPage';
 import Home from '../pages/Home/Home';
 import Main from '../pages/main/Main';
 import MyReviewed from '../pages/my-review/MyReviewed';
@@ -24,6 +26,9 @@ const router = createBrowserRouter([
 
         // My Reviews Page
         {path: `/my-review`, element:<PrivatePage><MyReviewed></MyReviewed></PrivatePage> },
+
+        // Blog Page
+        {path: `/blog`, loader:async()=> fetch('http://localhost:5000/blog'), element:<BlogPage></BlogPage> },
     ]},
 
     // Login Form
