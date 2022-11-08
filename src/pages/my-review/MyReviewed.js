@@ -18,7 +18,7 @@ const MyReviewed = () => {
 
     return (
         <>
-            <section>
+            <section className={`grid grid-cols-2 gap-x-[10%] mx-[10%]`}>
                 {
                     reviwedServices?.map(elm => <ReviewedCard key={elm._id} data={elm}></ReviewedCard>)
                 }
