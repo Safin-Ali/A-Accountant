@@ -15,7 +15,7 @@ const RowCard = ({data,boolean}) => {
         <h5 className={`mb-2 text-2xl font-bold tracking-tight capitalize`}>{service_name}</h5>
         <p className={`mb-3 font-normal`}>{service_des.slice(0,100)}</p>
         <div className={boolean ? 'block' : 'hidden'}>
-            <DetailsBtn text={`Details`}></DetailsBtn>
+            <DetailsBtn text={`Details`} data={data}></DetailsBtn>
         </div>
     </div>
         </div>

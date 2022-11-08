@@ -6,17 +6,19 @@ import Signup from '../components/form/Signup';
 import ReviewCard from '../components/review-card/ReviewCard';
 import Home from '../pages/Home/Home';
 import Main from '../pages/main/Main';
+import Service from '../pages/services/Service';
 import Services from '../pages/services/Services';
 
 const router = createBrowserRouter([
     // Main Page
     {path: '/', element: <Main></Main>, children:[
-        {path: `/`, element:<Home></Home> }
-    ]},
+        {path: `/`, element:<Home></Home> },
 
-    // Services Page
-    {path: '/services', element: <Main></Main>, children:[
-        {path: `/services`, loader: async ()=> fetch(`http://localhost:5000/services`), element:<Services></Services> }
+         // Services Page
+        {path: `/services`, loader: async ()=> fetch(`http://localhost:5000/services`), element:<Services></Services> },
+
+        // Service Page With ID
+        {path: `/service/:id`, loader: async ({params})=> fetch(`http://localhost:5000/service/${params.id}`), element:<Service></Service> },
     ]},
 
     // Login Form
