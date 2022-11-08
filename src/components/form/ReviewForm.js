@@ -1,7 +1,8 @@
 import React from 'react';
 import {MdRateReview} from 'react-icons/md';
+import {GrClose} from 'react-icons/gr';
 
-const ReviewForm = () => {
+const ReviewForm = ({data,visibleModal}) => {
 
     function handleFeedbackSubmit (e) {
         e.preventDefault();
@@ -14,7 +15,10 @@ const ReviewForm = () => {
 
     return (
         <section className={`absolute w-[60%] rounded-lg min-h-[calc(100vh-20vh)] max-h-[calc(100vh-20vh)] top-1/2 left-1/2 bg-slate-200 p-10 -translate-x-1/2 -translate-y-1/2`}>
+            <div className={`flex justify-between items-center`}>
             <h4 className={`text-3xl`}>Please Give Me Feedback!</h4>
+            <GrClose onClick={visibleModal} className={`text-2xl cursor-pointer`}></GrClose>
+            </div>
             <form onSubmit={handleFeedbackSubmit}>
             <div className={`grid grid-cols-2 gap-x-[10%]`}>
                     <div className={`my-5`}>
