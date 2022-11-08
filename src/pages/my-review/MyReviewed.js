@@ -8,8 +8,6 @@ const MyReviewed = () => {
 
     const [reviwedServices,setReviwedServices] = useState();
 
-    console.log(reviwedServices)
-
     useEffect(()=>{
         fetch(`http://localhost:5000/my-review/?email=${userData?.email}`)
         .then(res => res.json())
@@ -18,7 +16,7 @@ const MyReviewed = () => {
 
     return (
         <>
-            <section className={`grid grid-cols-2 gap-x-[10%] mx-[10%]`}>
+            <section className={`grid grid-cols-2 gap-x-[7%] gap-[5%] mx-[10%]`}>
                 {
                     reviwedServices?.map(elm => <ReviewedCard key={elm._id} data={elm}></ReviewedCard>)
                 }
