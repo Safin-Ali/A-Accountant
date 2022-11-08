@@ -40,11 +40,11 @@ const Service = () => {
                     }
                 <div className={`max-h-screen overflow-y-scroll hide-scrollbar border-l-2 border-l-purple-600`}>
                     {
-                        reviewDT.length === 0 ? <p className={`text-center text-2xl`}>No Review</p> : reviewDT.map(elm => <ReviewCard key={elm._id} data={elm}></ReviewCard>)
+                        reviewDT.length === 0 ? <p className={`text-center text-2xl`}>No Review</p> : reviewDT.map((elm,idx) => <ReviewCard key={idx} data={elm}></ReviewCard>)
                     }
                 </div>
                 {
-                    bool && <ReviewForm data={srvcDT} visibleModal={visibleModal}></ReviewForm>
+                    bool && <ReviewForm data={srvcDT} visibleModal={visibleModal} setReviewDT={setReviewDT}></ReviewForm>
                 }
             </section>
         </>

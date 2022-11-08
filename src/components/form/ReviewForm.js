@@ -4,23 +4,24 @@ import {GrClose} from 'react-icons/gr';
 import { AuthData } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
-const ReviewForm = ({data,visibleModal}) => {
+const ReviewForm = ({data,visibleModal,setReviewDT}) => {
 
     const {userData} = useContext(AuthData);
 
     const service_id = data._id;
     // submit feedback
-    function postData (data) {
+    function postData (reviewData) {
         fetch(`http://localhost:5000/review`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(reviewData),
         })
         .then((response) => response.json())
         .then((data) => {
             visibleModal()
+            setReviewDT(elm => [...elm,reviewData])
             console.log('Success:', data);
         })
         .catch((error) => {

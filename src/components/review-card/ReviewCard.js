@@ -1,5 +1,4 @@
 import React from 'react';
-import img from './3324677.jpg';
 
 const ReviewCard = ({data}) => {
     const {feedbackText,serviceId,userEmail,userImg,userName,_id} = data;
