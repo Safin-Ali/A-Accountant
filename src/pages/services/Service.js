@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ReviewCard from '../../components/review-card/ReviewCard';
 import ServiceDetailsCard from './ServiceDetailsCard';
 import '../../components/review-card/ReviewCard.css';
 import ReviewForm from '../../components/form/ReviewForm';
+import { Helmet } from 'react-helmet';
 
 const Service = () => {
 
@@ -34,6 +35,9 @@ const Service = () => {
 
     return (
         <>
+        <Helmet>
+            <title>Service</title>
+        </Helmet>
             <section className={`grid grid-cols-2 justify-center items-center`}>
                     {
                         srvcDT && <ServiceDetailsCard data={srvcDT} visibleModal={visibleModal}></ServiceDetailsCard>

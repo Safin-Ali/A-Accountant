@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import SeeMoreBtn from '../../components/button/SeeMoreBtn';
 import CarouselBanner from '../../components/carousel/CarouselBanner';
-import Navbar from '../../components/Navbar/Navbar';
 import RowCard from '../../components/row-card/RowCard';
 import LoadingAnim from '../../components/spinner/LoadingAnim';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
 
@@ -17,6 +17,9 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
             <CarouselBanner></CarouselBanner>
             <div className={`mt-10 container mx-auto`}>
                 {
