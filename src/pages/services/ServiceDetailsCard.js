@@ -1,4 +1,5 @@
 import React from 'react';
+import { ViewImg } from '../../components/row-card/RowCard';
 
 const ServiceDetailsCard = ({data,visibleModal}) => {
 
@@ -6,8 +7,8 @@ const ServiceDetailsCard = ({data,visibleModal}) => {
 
     return (
         <section className={`w-2/3 mx-auto border-2 shadow-lg rounded-lg`}>
-            <div>
-                <img src={service_thumb} className={`rounded-t-lg`} alt="Service" />
+            <div className={`rounded-t-lg cursor-pointer`}>
+                <ViewImg imgLink={service_thumb}></ViewImg>
             </div>
             <div className={`p-5`}>
                 <h4 className={`font-semibold text-center capitalize mb-2 text-purple-600`}>{service_name}</h4>

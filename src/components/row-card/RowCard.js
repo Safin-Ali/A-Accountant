@@ -1,14 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import DetailsBtn from '../button/DetailsBtn';
 import LoadingAnim from '../spinner/LoadingAnim';
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+
+
+export function ViewImg ({imgLink}) {
+    return (
+        <PhotoProvider>
+        <PhotoView src={imgLink}>
+          <img src={imgLink} alt="Service Banner" />
+        </PhotoView>
+      </PhotoProvider>
+    )
+}
 
 const RowCard = ({data,boolean}) => {
     const {service_name,service_des,_id,rating,service_thumb} = data;
     return(
         <div className={`flex my-7 rounded-lg items-center border shadow-md w-9/12 mx-auto`}>
     {/* Services Thumb */}
-    <div className={`w-2/3 mx-auto`}>
-        <img src={service_thumb} className={`w-full rounded-l-lg`} alt={`Banner ${service_name}`} />
+    <div className={`w-2/3 mx-auto cursor-pointer`}>
+    <ViewImg imgLink={service_thumb}></ViewImg>
     </div>
     {/* Services Content */}
     <div className={`flex items-center flex-col text-center`}>
