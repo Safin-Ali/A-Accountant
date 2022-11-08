@@ -7,6 +7,7 @@ import ReviewCard from '../components/review-card/ReviewCard';
 import Home from '../pages/Home/Home';
 import Main from '../pages/main/Main';
 import MyReviewed from '../pages/my-review/MyReviewed';
+import PrivatePage from '../pages/private/PrivatePage';
 import Service from '../pages/services/Service';
 import Services from '../pages/services/Services';
 
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
         {path: `/services/:id`, element:<Service></Service> },
 
         // My Reviews Page
-        {path: `/my-review`, element:<MyReviewed></MyReviewed> },
+        {path: `/my-review`, element:<PrivatePage><MyReviewed></MyReviewed></PrivatePage> },
     ]},
 
     // Login Form
