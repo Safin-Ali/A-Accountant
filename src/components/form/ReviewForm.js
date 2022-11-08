@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {MdRateReview} from 'react-icons/md';
 import {GrClose} from 'react-icons/gr';
+import { AuthData } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const ReviewForm = ({data,visibleModal}) => {
 
+    const {userData} = useContext(AuthData);
+
+    // submit feedback
     function postData (data) {
         fetch(`http://localhost:5000/review`, {
         method: 'POST',
@@ -19,31 +24,35 @@ const ReviewForm = ({data,visibleModal}) => {
         .catch((error) => {
             console.error('Error:', error);
         });
-            }
-
+    }
+    // get form value
     function handleFeedbackSubmit (e) {
         e.preventDefault();
         const form = e.target;
         const userName = form.userName.value;
         const userEmail = form.userEmail.value;
+        const userImg = form.userImg.src;
         const feedbackText = form.feedbackDescription.value;  
-        const data = {userName,userEmail,feedbackText};
+        const data = {userName,userEmail,feedbackText,userImg};
         postData(data);
     }
-
-    return (
-        <section className={`absolute w-[60%] rounded-lg min-h-[calc(100vh-20vh)] max-h-[calc(100vh-20vh)] top-1/2 left-1/2 bg-slate-200 p-10 -translate-x-1/2 -translate-y-1/2`}>
+    if(userData?.email){
+        return(
+            <section className={`absolute w-[60%] rounded-lg min-h-[calc(100vh-20vh)] top-1/2 left-1/2 bg-slate-200 p-10 -translate-x-1/2 -translate-y-1/2`}>
             <div className={`flex justify-between items-center`}>
             <h4 className={`text-3xl`}>Please Give Me Feedback!</h4>
             <GrClose onClick={visibleModal} className={`text-2xl cursor-pointer`}></GrClose>
             </div>
             <form onSubmit={handleFeedbackSubmit}>
+                <div className={`w-2/12 mx-auto my-5 border shadow-md rounded-full`}>
+                    <img src={userData?.photoURL} name={`userImg`} className={`rounded-full`} alt="User Avatar" />
+                </div>
             <div className={`grid grid-cols-2 gap-x-[10%]`}>
                     <div className={`my-5`}>
-                        <input type="text" name={`userName`} className={`border p-2 rounded-lg w-full focus:outline-purple-600`} value={`Name`} readOnly/>
+                        <input type="text" name={`userName`} className={`border p-2 rounded-lg w-full focus:outline-purple-600`} placeholder={`Your Name`} defaultValue={userData?.displayName}/>
                     </div>
                     <div className={`my-5`}>
-                        <input type="email" name={`userEmail`} className={`border p-2 rounded-lg w-full focus:outline-purple-600`} value={`Email`} readOnly/>
+                        <input type="email" name={`userEmail`} className={`border p-2 rounded-lg w-full focus:outline-purple-600`} placeholder={`Your Email`} defaultValue={userData?.email}/>
                     </div>
                     <div className={`my-5 col-span-2`}>
                         <textarea name="feedbackDescription" className={`w-full px-5 py-3 font-medium rounded-md focus:outline-purple-600`} cols="30" rows="10"></textarea>
@@ -54,7 +63,17 @@ const ReviewForm = ({data,visibleModal}) => {
             </div>
             </form>
         </section>
-    );
+        )
+    }
+    return(
+        <section className={`absolute w-[60%] rounded-lg min-h-[calc(100vh-20vh)] max-h-[calc(100vh-20vh)] top-1/2 left-1/2 bg-slate-200 p-10 -translate-x-1/2 -translate-y-1/2`}>
+            <div className={`flex justify-between items-center`}>
+            <h1 className={`text-3xl capitalize font-medium`}>Please Login First! Then try Agin</h1>
+            <GrClose onClick={visibleModal} className={`text-2xl cursor-pointer`}></GrClose>
+            </div>
+            <Link className={`flex mb-10 text-3xl text-purple-600 underline justify-center min-h-screen items-center`} to={`/login`}>Login</Link>
+        </section>
+    )
 };
 
 export default ReviewForm;

@@ -1,8 +1,11 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
-import {RiUserAddFill} from 'react-icons/ri'
+import React, { useContext } from "react";
+import {Navigate, NavLink, useNavigate} from "react-router-dom";
+import {RiUserAddFill, RiUserSharedFill} from 'react-icons/ri'
+import { AuthData } from "../../context/AuthContext";
 
 const Navbar = () => {
+  const {userData,logOut} = useContext(AuthData);
+  const navigate = useNavigate();
   return (
     <header className="mb-10">
       <nav className={`flex justify-between px-[3%] items-center p-5 shadow-md`}>
@@ -17,7 +20,10 @@ const Navbar = () => {
 
         {/* User Profile */}
         <div>
-          <RiUserAddFill className="text-2xl cursor-pointer"></RiUserAddFill>
+          {
+            userData?.email && <RiUserSharedFill onClick={logOut} className={`text-2xl cursor-pointer`}></RiUserSharedFill>
+            || <RiUserAddFill onClick={()=> navigate(`/login`)} className="text-2xl cursor-pointer"></RiUserAddFill>
+          }
         </div>
       </nav>
     </header>

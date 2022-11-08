@@ -21,7 +21,9 @@ const AuthContext = ({children}) => {
         return createUserWithEmailAndPassword(auth,email,pass);
     }
     const logOut = () => {
-        return signOut(auth);
+        return signOut(auth)
+        .then(res => {})
+        .catch(e => e.message);
     }
     const signWithGoogle = () => {
         return signInWithPopup(auth,googleProv);
