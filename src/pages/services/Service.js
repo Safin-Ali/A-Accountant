@@ -38,7 +38,7 @@ const Service = () => {
                     <ReviewCard></ReviewCard>
                 </div>
                 {
-                    bool && <ReviewForm visibleModal={visibleModal}></ReviewForm>
+                    bool && <ReviewForm data={fetchSingleServiceDT} visibleModal={visibleModal}></ReviewForm>
                 }
             </section>
         </>
