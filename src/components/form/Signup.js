@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
+import { AuthData } from '../../context/AuthContext';
 import SubmitBtn from '../button/SubmitBtn';
 
 const Signup = () => {
 
     const[visibleBool,setVisibleBool] = useState(false);
     const [showPass,setShowPassBoo] = useState(false);
+    const {signUp,profileUpdate} = useContext(AuthData);
 
     // Handle Visible Icon Toggle
     function handleVisible (e) {
@@ -22,13 +24,20 @@ const Signup = () => {
     function handlSignup (e) {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        const name = form.userName.value || null;
+        const userImageUrl = form.userImgUrl.value || null;
         const email = form.email.value;
         const firstPassword = form.firstPassword.value;
         const confirmPassword = form.confPassword.value;
         if(firstPassword !== confirmPassword){
             return console.log('wrong password')
         }
+        signUp(email,confirmPassword)
+        .then(res => {
+            profileUpdate(name,userImageUrl);
+            form.reset();
+        })
+        .catch(e => console.log(e.message))
     }
 
     return (
@@ -40,11 +49,14 @@ const Signup = () => {
                     <input className={`px-2 w-full font-medium py-1 bg-Default border rounded-sm`} type="text" name={`userName`} placeholder={`Your Name`} required/>
                 </div>
                 <div className={`my-4`}>
+                    <input className={`px-2 w-full font-medium py-1 bg-Default border rounded-sm`} type="text" name={`userImgUrl`} placeholder={`Image Url`} required/>
+                </div>
+                <div className={`my-4`}>
                     <input className={`px-2 w-full font-medium py-1 bg-Default border rounded-sm`} type="email" name={`email`} placeholder={`Your Email`} required/>
                 </div>
                 <div className={`my-4 relative`}>
                     <div>
-                        <input onKeyUp={handleVisible} className={`px-2 w-full py-1 bg-Default border rounded-sm`} type={showPass ? 'text' : 'password'} name={`password`} placeholder={`Your Password`} required/>
+                        <input onKeyUp={handleVisible} className={`px-2 w-full py-1 bg-Default border rounded-sm`} type={showPass ? 'text' : 'password'} name={`firstPassword`} placeholder={`Your Password`} required/>
                     </div>
                     <span onClick={handleTogglePass} className={`${visibleBool ? 'inline-block' : 'hidden'} absolute cursor-pointer top-1/2 -translate-y-1/2 right-[5%]`}>
                         {

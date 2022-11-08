@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStat
 import app from '../firebase/firebase.init';
 
 
-const AuthData = createContext();
+export const AuthData = createContext();
 
 const AuthContext = ({children}) => {
 
@@ -46,9 +46,9 @@ const AuthContext = ({children}) => {
     const authInfo = {logIn,userData,loaded,signUp,logOut,signWithGoogle,profileUpdate};
 
     return (
-        <AuthData>
+        <AuthData.Provider value={authInfo}>
             {children}
-        </AuthData>
+        </AuthData.Provider>
     );
 };
 
