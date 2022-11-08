@@ -6,6 +6,7 @@ import Signup from '../components/form/Signup';
 import ReviewCard from '../components/review-card/ReviewCard';
 import Home from '../pages/Home/Home';
 import Main from '../pages/main/Main';
+import MyReviewed from '../pages/my-review/MyReviewed';
 import Service from '../pages/services/Service';
 import Services from '../pages/services/Services';
 
@@ -19,6 +20,9 @@ const router = createBrowserRouter([
 
         // Service Page With ID
         {path: `/services/:id`, element:<Service></Service> },
+
+        // My Reviews Page
+        {path: `/my-review`, element:<MyReviewed></MyReviewed> },
     ]},
 
     // Login Form
@@ -26,10 +30,6 @@ const router = createBrowserRouter([
 
     // Signup Form
     {path:`/signup`,element: <Signup></Signup>},
-
-    // Review Section
-    {path: `/review`, element: <ReviewCard></ReviewCard>},
-    {path: `/review-form`, element: <ReviewForm></ReviewForm>},
 ])
 
 export default router;

@@ -14,7 +14,7 @@ const Service = () => {
 
     const params = useParams();
 
-    // get data
+    // Get Specific Service Data With Review Data
     useEffect(()=>{
         fetch(`http://localhost:5000/services/${params.id}`)
         .then(res => res.json())
