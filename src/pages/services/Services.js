@@ -5,15 +5,13 @@ import LoadingAnim from '../../components/spinner/LoadingAnim.js';
 
 const Services = () => {
 
-    const fetchLoaderDT = useLoaderData();
-
-    console.log(fetchLoaderDT)
+    const fetchLoaderDT = useLoaderData(null);
 
     return (
         <>
             {
-                !fetchLoaderDT?<div className={`text-center mb-10`}> <LoadingAnim></LoadingAnim></div>
-                :fetchLoaderDT.map(elm => <RowCard key={elm._id} data={elm}></RowCard>)
+                Array.isArray(fetchLoaderDT) ? fetchLoaderDT.map(elm => <RowCard boolean={true} key={elm._id} data={elm}></RowCard>)
+                : <div className={`text-center mb-10`}> <LoadingAnim></LoadingAnim></div>
             }        
         </>
     );

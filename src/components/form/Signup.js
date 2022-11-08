@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
+import SubmitBtn from '../button/SubmitBtn';
 
 const Signup = () => {
 
@@ -55,7 +56,7 @@ const Signup = () => {
                     <input className={`px-2 w-full font-medium py-1 bg-Default border rounded-sm`} type={showPass ? 'text' : 'password'} name={`confPassword`} placeholder={`Confirm Password`} required/>
                 </div>
                 <div className={`my-4 text-center`}>
-                    <button className={``}>SIGNUP</button>
+                    <SubmitBtn text={`SIGNUP`}></SubmitBtn>
                 </div>
             </form>
             </div>
