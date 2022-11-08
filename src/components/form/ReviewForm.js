@@ -4,13 +4,31 @@ import {GrClose} from 'react-icons/gr';
 
 const ReviewForm = ({data,visibleModal}) => {
 
+    function postData (data) {
+        fetch(`http://localhost:5000/review`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+            }
+
     function handleFeedbackSubmit (e) {
         e.preventDefault();
         const form = e.target;
         const userName = form.userName.value;
         const userEmail = form.userEmail.value;
-        const feedbackText = form.feedbackDescription.value;
-        console.log(userEmail,userName,feedbackText)
+        const feedbackText = form.feedbackDescription.value;  
+        const data = {userName,userEmail,feedbackText};
+        postData(data);
     }
 
     return (

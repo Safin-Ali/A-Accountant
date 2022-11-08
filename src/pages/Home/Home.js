@@ -20,7 +20,7 @@ const Home = () => {
             <CarouselBanner></CarouselBanner>
             <div className={`mt-10 container mx-auto`}>
                 {
-                    srvcData?.map(elm => <RowCard key={elm._id} data={elm}></RowCard>)
+                    srvcData?.map(elm => <RowCard key={elm._id} data={elm} boolean={true}></RowCard>)
                     || <div className={`text-center mb-10`}> <LoadingAnim></LoadingAnim> </div>
                 }
             </div>

@@ -6,7 +6,7 @@ const DetailsBtn = ({text,data}) => {
     const navigate = useNavigate();
 
     function handleDetailsBtn () {
-        navigate(`/service/${data._id}`)
+        navigate(`/services/${data._id}`)
     }
 
     return (
