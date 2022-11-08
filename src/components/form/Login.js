@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import {FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
 import { AuthData } from '../../context/AuthContext';
 import { Helmet } from 'react-helmet';
+import LoadingAnim from '../spinner/LoadingAnim';
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
 
     const[visibleBool,setVisibleBool] = useState(false);
     const [showPass,setShowPassBoo] = useState(false);
-    const {logIn} = useContext(AuthData);
+    const {logIn,loaded,userData} = useContext(AuthData);
 
     // Handle Login Button Func
     function handleLogin (e) {
@@ -19,18 +21,22 @@ const Login = () => {
         .then(res => {
         })
         .catch(e => console.log(e.message))
-    }
+    };
 
     // Handle Visible Icon Toggle
     function handleVisible (e) {
         const feildValue = e.target.value;
         feildValue ? setVisibleBool(true) : setVisibleBool(false);
-    }
+    };
 
     // function toggle hide/show password
     function handleTogglePass () {
         setShowPassBoo(!showPass)
-    }
+    };
+
+    if(loaded) return <div className={`flex h-screen items-center text-center justify-center`}><LoadingAnim></LoadingAnim></div>
+    
+    if(userData?.email) return <Navigate to={'/'}></Navigate>
 
     return (
         <>

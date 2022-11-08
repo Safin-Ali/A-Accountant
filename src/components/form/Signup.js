@@ -3,23 +3,25 @@ import {FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
 import { AuthData } from '../../context/AuthContext';
 import SubmitBtn from '../button/SubmitBtn';
 import { Helmet } from 'react-helmet';
+import LoadingAnim from '../spinner/LoadingAnim';
+import { Navigate } from 'react-router-dom';
 
 const Signup = () => {
 
     const[visibleBool,setVisibleBool] = useState(false);
     const [showPass,setShowPassBoo] = useState(false);
-    const {signUp,profileUpdate} = useContext(AuthData);
+    const {signUp,profileUpdate,loaded,userData} = useContext(AuthData);
 
     // Handle Visible Icon Toggle
     function handleVisible (e) {
         const feildValue = e.target.value;
         feildValue ? setVisibleBool(true) : setVisibleBool(false);
-    }
+    };
     
     // function toggle hide/show password
     function handleTogglePass () {
         setShowPassBoo(!showPass)
-    }
+    };
 
     // Handle Signup Button Func
     function handlSignup (e) {
@@ -39,7 +41,11 @@ const Signup = () => {
             form.reset();
         })
         .catch(e => console.log(e.message))
-    }
+    };
+
+    if(loaded) return <div className={`flex h-screen items-center text-center justify-center`}><LoadingAnim></LoadingAnim></div>
+
+    if(userData?.email) return <Navigate to={`/`}></Navigate>
 
     return (
         <>
