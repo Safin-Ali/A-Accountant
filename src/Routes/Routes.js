@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         {path: `/services`, loader: async ()=> fetch(`http://localhost:5000/services`), element:<Services></Services> },
 
         // Service Page With ID
-        {path: `/services/:id`, loader: async ({params})=> fetch(`http://localhost:5000/services/${params.id}`), element:<Service></Service> },
+        {path: `/services/:id`, element:<Service></Service> },
     ]},
 
     // Login Form
