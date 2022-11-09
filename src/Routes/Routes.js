@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import AddServices from '../components/form/AddServices';
 import Login from '../components/form/Login';
 import Signup from '../components/form/Signup';
 import BlogPage from '../pages/Blog/BlogPage';
@@ -26,6 +27,9 @@ const router = createBrowserRouter([
 
         // Blog Page
         {path: `/blog`, loader:async()=> fetch('http://localhost:5000/blog'), element:<BlogPage></BlogPage> },
+
+        // Add Services Page
+        {path: `/add-service`, element:<AddServices></AddServices> },
     ]},
 
     // Login Form
