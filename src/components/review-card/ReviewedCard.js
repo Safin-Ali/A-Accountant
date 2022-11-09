@@ -25,7 +25,7 @@ function ReviwedcardCompo ({data,reviewData,toggleModal}) {
                 <img src={service_thumb} className={`rounded-t-xl`} alt="Service thumb" />
             </div>
             <ReviewData data={reviewData}></ReviewData>
-                <FiEdit onClick={toggleModal} className={`absolute bottom-[2%] text-xl cursor-pointer left-[5%]`}>
+                <FiEdit onClick={()=>toggleModal(reviewData._id)} className={`absolute bottom-[2%] text-xl cursor-pointer left-[5%]`}>
 
                 </FiEdit>
                 <FaTrash onClick={()=>{

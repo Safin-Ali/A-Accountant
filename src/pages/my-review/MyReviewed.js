@@ -10,6 +10,8 @@ const MyReviewed = () => {
 
     const [reviwedServices,setReviwedServices] = useState();
 
+    const [reviewServiceID,setReviewServiceID] = useState();
+
     const existEncryptToken = localStorage.getItem('jwt-token');
 
     useEffect(()=>{
@@ -20,17 +22,44 @@ const MyReviewed = () => {
         })
         .then(res => res.json())
         .then(data => setReviwedServices(data))
-    },[userData])
+    },[userData,reviwedServices])
 
     // Toggle Update Form Modal
-    const [modal,setModal] = useState(!false);
+    const [modal,setModal] = useState(false);
 
-    function toggleModal () {
+    function toggleModal (id) {
         setModal(!modal)
+        !modal ? setReviewServiceID(id) : setReviewServiceID()
     }
 
-    function handleUpdateData () {
-        
+    function updateAPIData (updateData) {
+        fetch(`http://localhost:5000/review?id=${reviewServiceID}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updateData),
+            })
+            .then((response) => response.json())
+            .then((data) => {                
+                const currentObj = reviwedServices.filter(elm => elm._id === reviewServiceID);
+                console.log(currentObj)
+                setReviwedServices(currentObj)
+                setModal(!modal)
+                
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    function handleUpdateData (e) {
+        e.preventDefault();
+        const form = e.target;
+        const feedbackText = form.updateDes.value;
+        updateAPIData({feedbackText});
+        form.reset()
     }
 
     return (
@@ -44,7 +73,7 @@ const MyReviewed = () => {
                     </ReviewedCard>)
                 }
                 {
-                    modal && <UpdateReviewForm toggleModal={toggleModal}></UpdateReviewForm>
+                    modal && <UpdateReviewForm reviewServiceID={reviewServiceID} handleUpdateData={handleUpdateData} toggleModal={toggleModal}></UpdateReviewForm>
                 }
             </section>
         </>
