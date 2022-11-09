@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         {path: `/blog`, loader:async()=> fetch('http://localhost:5000/blog'), element:<BlogPage></BlogPage> },
 
         // Add Services Page
-        {path: `/add-service`, element:<AddServices></AddServices> },
+        {path: `/add-service`, element:<PrivatePage><AddServices></AddServices></PrivatePage> },
     ]},
 
     // Login Form

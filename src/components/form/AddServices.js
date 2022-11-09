@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthData } from '../../context/AuthContext';
 import SubmitBtn from '../button/SubmitBtn';
 
 const AddServices = () => {
+
+    const {userData} = useContext(AuthData);
+
+    const {displayName,email} = userData;
 
     function addService (addServiceObj) {
         fetch(`http://localhost:5000/services`, {
@@ -19,7 +24,6 @@ const AddServices = () => {
             console.error('Error:', error);
         });
     }
-
     function handleAddService (e) {
         e.preventDefault()
         const form = e.target;
@@ -28,7 +32,7 @@ const AddServices = () => {
         const price = form.servicePrice.value || null;
         const service_thumb = form.serviceImg.value || null;
         const service_des = form.serviceDes.value || null;
-        const newServiceObj = {service_name,rating,price,service_thumb,service_des};
+        const newServiceObj = {service_name,rating,price,service_thumb,service_des,displayName,email};
         addService(newServiceObj);
         form.reset();
     }

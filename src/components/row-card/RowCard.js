@@ -20,7 +20,7 @@ const RowCard = ({data,boolean}) => {
     return(
         <div className={`flex my-7 rounded-lg items-center border shadow-md w-9/12 mx-auto`}>
     {/* Services Thumb */}
-    <div className={`w-2/3 mx-auto cursor-pointer`}>
+    <div className={`w-2/3 cursor-pointer`}>
     <ViewImg imgLink={service_thumb}></ViewImg>
     </div>
     {/* Services Content */}

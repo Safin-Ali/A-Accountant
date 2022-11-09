@@ -6,8 +6,6 @@ import {Navigate} from 'react-router-dom'
 const PrivatePage = ({children}) => {
     const {loaded,userData} = useContext(AuthData);
 
-    console.log(userData)
-
     if(loaded){
         return <div className={`flex h-screen items-center text-center justify-center`}><LoadingAnim></LoadingAnim></div>
     }
