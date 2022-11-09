@@ -13,8 +13,9 @@ function deleteReview (data) {
     .then(data => console.log(data))
 }
 
-function ReviwedcardCompo ({data,reviewData}) {
+function ReviwedcardCompo ({data,reviewData,setSrvcDetails}) {
     const {service_name,service_thumb} = data;
+    console.log(reviewData)
     return(
         <div className={`border relative rounded-sm shadow-md`}>
             <div>
@@ -24,7 +25,12 @@ function ReviwedcardCompo ({data,reviewData}) {
             </div>
             <ReviewData data={reviewData}></ReviewData>
                 <FiEdit className={`absolute bottom-[2%] text-xl cursor-pointer left-[3%]`}></FiEdit>
-                <FaTrash onClick={()=>deleteReview(reviewData)} className={`absolute bottom-[2%] text-xl cursor-pointer right-[3%]`}></FaTrash>
+                <FaTrash onClick={()=>{
+                    deleteReview(reviewData)
+                    setSrvcDetails([])
+                }} className={`absolute bottom-[2%] text-xl cursor-pointer right-[3%]`}>
+
+                </FaTrash>
         </div>
     )
 }
@@ -59,7 +65,7 @@ const ReviewedCard = ({data}) => {
         .then(data => setSrvcDetails(data))
     },[])
 
-    return srvcDet?.map(elm => <ReviwedcardCompo key={elm._id} data={elm} reviewData={data}></ReviwedcardCompo>)
+    return srvcDet?.map(elm => <ReviwedcardCompo srvcDet={srvcDet} setSrvcDetails={setSrvcDetails} key={elm._id} data={elm} reviewData={data}></ReviwedcardCompo>)
 };
 
 export default ReviewedCard;
