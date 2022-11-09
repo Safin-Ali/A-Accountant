@@ -11,6 +11,21 @@ const Login = () => {
     const [showPass,setShowPassBoo] = useState(false);
     const {logIn,loaded,userData} = useContext(AuthData);
 
+    // Send Email And Get JWT Encrypt Token
+
+    function jwtToken (email) {
+        fetch(`http://localhost:5000/jwt`,{
+            method: 'POST',
+            headers: {
+                email : email,
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            localStorage.setItem('jwt-token',data.encryptToken)
+        })
+    }
+
     // Handle Login Button Func
     function handleLogin (e) {
         e.preventDefault();
@@ -19,6 +34,7 @@ const Login = () => {
         const password = form.password.value;
         logIn(email,password)
         .then(res => {
+            jwtToken(email)
         })
         .catch(e => console.log(e.message))
     };

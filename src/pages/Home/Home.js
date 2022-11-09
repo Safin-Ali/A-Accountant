@@ -13,7 +13,7 @@ const Home = () => {
     // get 3 services data
     const[srvcData,setSrvcData] = useState(null);
     useEffect(()=>{
-        fetch(`http://localhost:5000/`,{
+        fetch(`http://localhost:5000/home`,{
             headers: {
                 'Content-Type': 'application/json',
                 email: userData?.email,                

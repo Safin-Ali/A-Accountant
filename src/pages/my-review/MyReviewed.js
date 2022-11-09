@@ -9,8 +9,14 @@ const MyReviewed = () => {
 
     const [reviwedServices,setReviwedServices] = useState();
 
+    const existEncryptToken = localStorage.getItem('jwt-token');
+
     useEffect(()=>{
-        fetch(`http://localhost:5000/my-review/?email=${userData?.email}`)
+        fetch(`http://localhost:5000/my-review/?email=${userData?.email}`,{
+            headers: {
+                encryptToken: existEncryptToken,
+            }
+        })
         .then(res => res.json())
         .then(data => setReviwedServices(data))
     },[userData])

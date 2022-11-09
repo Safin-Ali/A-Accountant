@@ -6,6 +6,13 @@ import { AuthData } from "../../context/AuthContext";
 const Navbar = () => {
   const {userData,logOut} = useContext(AuthData);
   const navigate = useNavigate();
+
+  function handleLogOut () {
+    logOut()
+    .then(res => localStorage.removeItem('jwt-token'))
+    .catch(e => e.message);
+  }
+
   return (
     <header className="mb-10">
       <nav className={`flex justify-between px-[3%] items-center p-5 shadow-md`}>
@@ -22,7 +29,7 @@ const Navbar = () => {
             <Link to={'/blog'}>Blog</Link>
           </div>
           {
-            userData?.email && <RiUserSharedFill title={userData.displayName} onClick={logOut} className={`text-2xl cursor-pointer`}></RiUserSharedFill>
+            userData?.email && <RiUserSharedFill title={userData.displayName} onClick={handleLogOut} className={`text-2xl cursor-pointer`}></RiUserSharedFill>
             || <RiUserAddFill onClick={()=> navigate(`/login`)} className="text-2xl cursor-pointer"></RiUserAddFill>
           }
         </div>
