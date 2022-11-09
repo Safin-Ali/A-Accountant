@@ -22,7 +22,7 @@ const ReviewForm = ({data,visibleModal,setReviewDT}) => {
         .then((response) => response.json())
         .then((data) => {
             visibleModal()
-            setReviewDT(elm => [...elm,reviewData])
+            setReviewDT(elm => [reviewData,...elm]);
             console.log('Success:', data);
         })
         .catch((error) => {
@@ -38,7 +38,8 @@ const ReviewForm = ({data,visibleModal,setReviewDT}) => {
         const userImg = form.userImg.src;
         const feedbackText = form.feedbackDescription.value;  
         const serviceId = service_id;
-        const data = {userName,userEmail,feedbackText,userImg,serviceId};
+        const postedTime = new Date().getTime();
+        const data = {userName,userEmail,feedbackText,userImg,serviceId,postedTime};
         postData(data)
         form.reset()
     }
