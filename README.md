@@ -31,7 +31,7 @@
 12. **Dynamic Tittle**
 13. **Carousel (`Without Any Copmonent`)**
 14. **Service Image Click To FUll Screen**
-15. **Resposive AAny Device**
+15. **Resposive Any Device**
 16. **Awesomme Footer**
 
 ### **Visit Site [A Accountant](https://a-accountant.web.app/)**

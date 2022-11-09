@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         russo: ['Russo One', 'sans-serif'],
+        secular: ['Secular One', 'sans-serif'],
       },
       colors:{
         Default: '#F1F4F6',

@@ -11,8 +11,8 @@ const ReviewCard = ({data}) => {
 
             {/* User Feedback Content */}
             <div>
-                <h5 className={`font-semibold`}>{userEmail}</h5>
-                <p className={`mt-3`}>{feedbackText}</p>
+                <h5 className={`font-semibold text-purple-600`}>{userEmail}</h5>
+                <p className={`mt-3 font-secular`}>"{feedbackText}"</p>
             </div>
         </div>
     );

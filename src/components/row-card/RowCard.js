@@ -9,7 +9,7 @@ export function ViewImg ({imgLink}) {
     return (
         <PhotoProvider>
         <PhotoView src={imgLink}>
-          <img src={imgLink} alt="Service Banner" />
+          <img src={imgLink} className={`rounded-l-lg`} alt="Service Banner" />
         </PhotoView>
       </PhotoProvider>
     )

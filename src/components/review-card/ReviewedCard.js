@@ -2,22 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ReviewCard from './ReviewCard';
 import {FaTrash} from 'react-icons/fa'
 import {FiEdit} from 'react-icons/fi'
+import { confirmPasswordReset } from 'firebase/auth';
 
-
-function deleteReview (data) {
-    const {userEmail,serviceId} = data;
-    fetch(`http://localhost:5000/review?userEmail=${userEmail}&serviceId=${serviceId}`,{
-         method: 'DELETE' 
-        })
-    .then(res => res.json())
-    .then(data => console.log(data))
-}
-
-function handleUpdateData () {
-
-}
-
-function ReviwedcardCompo ({data,reviewData,toggleModal}) {
+function ReviwedcardCompo ({data,reviewData,toggleModal,deleteReview}) {
     const {service_name,service_thumb} = data;
     return(
         <div className={`border rounded-xl bg-zinc-200 w-2/3 mx-auto relative shadow-md`}>
@@ -57,19 +44,26 @@ function ReviewData ({data}) {
     );
 }
 
-const ReviewedCard = ({data,toggleModal}) => {
+const ReviewedCard = ({data,toggleModal,deleteReview}) => {
+    
 
     const [srvcDet,setSrvcDetails] = useState();
 
     const {serviceId} = data;
 
+    const existEncryptToken = localStorage.getItem('jwt-token');
+
     useEffect(()=>{
-        fetch(`http://localhost:5000/service/?serviceId=${serviceId}`)
+        fetch(`http://localhost:5000/service/?serviceId=${serviceId}`,{
+            headers: {
+                encryptToken: `Bearer ${existEncryptToken}`,
+            }
+        })
         .then(res => res.json())
         .then(data => setSrvcDetails(data))
     },[])
 
-    return srvcDet?.map(elm => <ReviwedcardCompo setSrvcDetails={setSrvcDetails} srvcDet={srvcDet} toggleModal={toggleModal} key={elm._id} data={elm} reviewData={data}></ReviwedcardCompo>)
+    return srvcDet?.map(elm => <ReviwedcardCompo deleteReview={deleteReview} setSrvcDetails={setSrvcDetails} srvcDet={srvcDet} toggleModal={toggleModal} key={elm._id} data={elm} reviewData={data}></ReviwedcardCompo>)
 };
 
 export default ReviewedCard;
