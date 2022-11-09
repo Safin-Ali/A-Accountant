@@ -14,7 +14,7 @@ const Login = () => {
     // Send Email And Get JWT Encrypt Token
 
     function jwtToken (email) {
-        fetch(`http://localhost:5000/jwt`,{
+        fetch(`https://a-accountant.vercel.app/jwt`,{
             method: 'POST',
             headers: {
                 email : email,

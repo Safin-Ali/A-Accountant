@@ -54,7 +54,7 @@ const ReviewedCard = ({data,toggleModal,deleteReview}) => {
     const existEncryptToken = localStorage.getItem('jwt-token');
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/service/?serviceId=${serviceId}`,{
+        fetch(`https://a-accountant.vercel.app/service/?serviceId=${serviceId}`,{
             headers: {
                 encryptToken: `Bearer ${existEncryptToken}`,
             }

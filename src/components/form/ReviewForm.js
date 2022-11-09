@@ -12,7 +12,7 @@ const ReviewForm = ({data,visibleModal,setReviewDT}) => {
     
     // submit feedback
     function postData (reviewData) {
-        fetch(`http://localhost:5000/review`, {
+        fetch(`https://a-accountant.vercel.app/review`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

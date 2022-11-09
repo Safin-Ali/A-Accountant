@@ -6,7 +6,7 @@ const CarouselBanner = () => {
     const [banners,setBanners] = useState(null);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/banner')
+        fetch('https://a-accountant.vercel.app/banner')
         .then(res => res.json())
         .then(data => setBanners(data));
     },[])

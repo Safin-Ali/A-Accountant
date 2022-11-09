@@ -8,11 +8,14 @@ const AddServices = () => {
 
     const {displayName,email} = userData;
 
+    const existEncryptToken = localStorage.getItem('jwt-token');
+
     function addService (addServiceObj) {
-        fetch(`http://localhost:5000/services`, {
+        fetch(`https://a-accountant.vercel.app/services`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            encryptToken: `Bearer ${existEncryptToken}`,
         },
         body: JSON.stringify(addServiceObj),
         })

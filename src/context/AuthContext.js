@@ -41,8 +41,6 @@ const AuthContext = ({children}) => {
         return () => stopObs();
     },[])
 
-    console.log(userData)
-
     const authInfo = {logIn,userData,loaded,signUp,logOut,signWithGoogle,profileUpdate};
 
     return (

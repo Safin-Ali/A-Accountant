@@ -17,7 +17,7 @@ const Service = () => {
 
     // Get Specific Service Data With Review Data
     useEffect(()=>{
-        fetch(`http://localhost:5000/services/${params.id}`)
+        fetch(`https://a-accountant.vercel.app/services/${params.id}`)
         .then(res => res.json())
         .then(data => {
             setSRVCDT(data.result);

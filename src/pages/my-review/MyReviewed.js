@@ -19,7 +19,7 @@ const MyReviewed = () => {
     const [callBack,setCall] =  useState(false)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/my-review/?email=${userData?.email}`,{
+        fetch(`https://a-accountant.vercel.app/my-review/?email=${userData?.email}`,{
             headers: {
                 encryptToken: `Bearer ${existEncryptToken}`,
             }
@@ -37,7 +37,7 @@ const MyReviewed = () => {
     }
 
     function updateAPIData (updateData) {
-        fetch(`http://localhost:5000/review?id=${reviewServiceID}`, {
+        fetch(`https://a-accountant.vercel.app/review?id=${reviewServiceID}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const MyReviewed = () => {
 
     function deleteReview (data) {
         const {userEmail,serviceId} = data;
-        fetch(`http://localhost:5000/review?userEmail=${userEmail}&serviceId=${serviceId}`,{
+        fetch(`https://a-accountant.vercel.app/review?userEmail=${userEmail}&serviceId=${serviceId}`,{
              method: 'DELETE' 
             })
         .then(res => {

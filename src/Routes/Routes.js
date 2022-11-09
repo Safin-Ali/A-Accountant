@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         {path: `/`, element:<Home></Home> },
 
          // Services Page
-        {path: `/services`, loader: async ()=> fetch(`http://localhost:5000/services`), element:<Services></Services> },
+        {path: `/services`, loader: async ()=> fetch(`https://a-accountant.vercel.app/services`), element:<Services></Services> },
 
         // Service Page With ID
         {path: `/services/:id`, element:<Service></Service> },
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         {path: `/my-review`, element:<PrivatePage><MyReviewed></MyReviewed></PrivatePage> },
 
         // Blog Page
-        {path: `/blog`, loader:async()=> fetch('http://localhost:5000/blog'), element:<BlogPage></BlogPage> },
+        {path: `/blog`, loader:async()=> fetch('https://a-accountant.vercel.app/blog'), element:<BlogPage></BlogPage> },
 
         // Add Services Page
         {path: `/add-service`, element:<PrivatePage><AddServices></AddServices></PrivatePage> },
