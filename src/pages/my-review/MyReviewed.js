@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ReviewedCard from '../../components/review-card/ReviewedCard';
 import { AuthData } from '../../context/AuthContext';
 import { Helmet } from 'react-helmet';
+import UpdateReviewForm from '../../components/form/UpdateReviewForm';
 
 const MyReviewed = () => {
 
@@ -21,6 +22,17 @@ const MyReviewed = () => {
         .then(data => setReviwedServices(data))
     },[userData])
 
+    // Toggle Update Form Modal
+    const [modal,setModal] = useState(!false);
+
+    function toggleModal () {
+        setModal(!modal)
+    }
+
+    function handleUpdateData () {
+        
+    }
+
     return (
         <>
             <Helmet>
@@ -28,7 +40,11 @@ const MyReviewed = () => {
             </Helmet>
             <section className={`grid grid-cols-2 gap-x-[7%] gap-[5%] mx-[10%]`}>
                 {
-                    reviwedServices?.map(elm => <ReviewedCard key={elm._id} data={elm}></ReviewedCard>)
+                    reviwedServices?.map(elm => <ReviewedCard toggleModal={toggleModal} key={elm._id} data={elm}>
+                    </ReviewedCard>)
+                }
+                {
+                    modal && <UpdateReviewForm toggleModal={toggleModal}></UpdateReviewForm>
                 }
             </section>
         </>

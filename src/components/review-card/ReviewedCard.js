@@ -13,22 +13,24 @@ function deleteReview (data) {
     .then(data => console.log(data))
 }
 
-function ReviwedcardCompo ({data,reviewData,setSrvcDetails}) {
-    const {service_name,service_thumb} = data;
-    console.log(reviewData)
-    return(
-        <div className={`border relative rounded-sm shadow-md`}>
-            <div>
-                <img src={service_thumb} className={`rounded-t-sm`} alt="Service thumb" />
-                <h4 className={`font-semibold my-3 text-center text-lg capitalize mb-2 text-purple-600`}>{service_name}</h4>
+function handleUpdateData () {
 
+}
+
+function ReviwedcardCompo ({data,reviewData,toggleModal}) {
+    const {service_name,service_thumb} = data;
+    return(
+        <div className={`border rounded-xl bg-zinc-200 w-2/3 mx-auto relative shadow-md`}>
+            <div>
+                <img src={service_thumb} className={`rounded-t-xl`} alt="Service thumb" />
             </div>
             <ReviewData data={reviewData}></ReviewData>
-                <FiEdit className={`absolute bottom-[2%] text-xl cursor-pointer left-[3%]`}></FiEdit>
+                <FiEdit onClick={toggleModal} className={`absolute bottom-[2%] text-xl cursor-pointer left-[5%]`}>
+
+                </FiEdit>
                 <FaTrash onClick={()=>{
                     deleteReview(reviewData)
-                    setSrvcDetails([])
-                }} className={`absolute bottom-[2%] text-xl cursor-pointer right-[3%]`}>
+                }} className={`absolute bottom-[2%] text-xl cursor-pointer right-[5%]`}>
 
                 </FaTrash>
         </div>
@@ -38,22 +40,24 @@ function ReviwedcardCompo ({data,reviewData,setSrvcDetails}) {
 function ReviewData ({data}) {
     const {feedbackText,serviceId,userEmail,userImg,userName,_id} = data;
     return (
-        <div className={`flex border-t flex-col my-5 items-center bg-zinc-100 gap-10 text-center justify-center p-10`}>
+        <div className={`px-5`}>
             {/* User Profile Image */}
             <div className={`w-1/5 border border-r rounded-full`}>
-                <img src={userImg} className={`rounded-full`} alt="User Avatar" />
+                <div className={`flex items-center my-3`}>
+                    <img src={userImg} className={`rounded-full block`} alt="User Avatar" />
+                    <h5 className={`font-semibold mx-2`}>{userEmail}</h5>
+                </div>
             </div>
 
             {/* User Feedback Content */}
             <div>
-                <h5 className={`font-semibold`}>{userEmail}</h5>
-                <p className={`mt-3`}>{feedbackText}</p>
+                <p className={`mt-3 pb-[15%] text-center`}>{feedbackText}</p>
             </div>
         </div>
     );
 }
 
-const ReviewedCard = ({data}) => {
+const ReviewedCard = ({data,toggleModal}) => {
 
     const [srvcDet,setSrvcDetails] = useState();
 
@@ -65,7 +69,7 @@ const ReviewedCard = ({data}) => {
         .then(data => setSrvcDetails(data))
     },[])
 
-    return srvcDet?.map(elm => <ReviwedcardCompo srvcDet={srvcDet} setSrvcDetails={setSrvcDetails} key={elm._id} data={elm} reviewData={data}></ReviwedcardCompo>)
+    return srvcDet?.map(elm => <ReviwedcardCompo setSrvcDetails={setSrvcDetails} srvcDet={srvcDet} toggleModal={toggleModal} key={elm._id} data={elm} reviewData={data}></ReviwedcardCompo>)
 };
 
 export default ReviewedCard;
