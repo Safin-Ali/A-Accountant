@@ -104,7 +104,7 @@ const MyReviewed = () => {
             <Helmet>
                 <title>My Review</title>
             </Helmet>
-            <section className={`grid grid-cols-2 hide-scrollbar max-h-screen overflow-y-scroll gap-x-[7%] gap-[5%] mx-[10%]`}>
+            <section className={`grid grid-cols-1 md:grid-cols-2 hide-scrollbar max-h-screen overflow-y-scroll gap-x-[7%] gap-[5%] lg:mx-[10%]`}>
                 {
                     reviwedServices?.length === 0 ? 
                     <h5 className={`text-4xl flex justify-center col-span-2 min-h-[calc(100vh-20vh)] items-center`}>No Reviews</h5>                    

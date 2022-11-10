@@ -6,7 +6,7 @@ import {FiEdit} from 'react-icons/fi'
 function ReviwedcardCompo ({data,reviewData,toggleModal,deleteReview}) {
     const {service_name,service_thumb} = data;
     return(
-        <div className={`border rounded-xl bg-zinc-200 w-2/3 mx-auto relative shadow-md`}>
+        <div className={`border rounded-xl bg-zinc-200 w-[85%] 2xl:w-2/3 mx-auto relative shadow-md`}>
             <div>
                 <img src={service_thumb} className={`rounded-t-xl`} alt="Service thumb" />
             </div>
