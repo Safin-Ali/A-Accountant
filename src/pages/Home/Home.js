@@ -7,6 +7,8 @@ import { Helmet } from 'react-helmet';
 import { AuthData } from '../../context/AuthContext';
 import CircleBox from '../../components/circle-box/CircleBox';
 import { useLoaderData } from 'react-router-dom';
+import Footer from '../../components/footer/Footer';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Home = () => {
 
@@ -76,7 +78,8 @@ const Home = () => {
                 <div className={`md:w-1/2`}>
                     <img className={`rounded-lg`} src='https://www.franklin.edu/sites/default/files/styles/btcb_photo/public/fr/back%20to%20college%20blog/main%20images/iStock-983321926.jpg?itok=usJ_HhgI' alt="Accountant Thumb" />
                 </div>
-            </div>        
+            </div>   
+            <Footer></Footer>     
         </>
     );
 };
