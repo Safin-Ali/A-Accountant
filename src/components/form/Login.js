@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import {FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
+import {FcGoogle} from 'react-icons/fc';
+import {BsFacebook,BsGithub} from 'react-icons/bs';
 import { AuthData } from '../../context/AuthContext';
 import { Helmet } from 'react-helmet';
 import LoadingAnim from '../spinner/LoadingAnim';
@@ -9,10 +11,25 @@ const Login = () => {
 
     const[visibleBool,setVisibleBool] = useState(false);
     const [showPass,setShowPassBoo] = useState(false);
-    const {logIn,loaded,userData} = useContext(AuthData);
+    const {logIn,loaded,userData,signWithGithub,signWithFacebook,signWithGoogle} = useContext(AuthData);
+
+    function handleLoginWithGoogle () {
+        signWithGoogle()
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
+    function handleLoginWithGithub () {
+        signWithGithub()
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
+    function handleLoginWithFacebook () {
+        signWithFacebook()
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
 
     // Send Email And Get JWT Encrypt Token
-
     function jwtToken (email) {
         fetch(`https://a-accountant.vercel.app/jwt`,{
             method: 'POST',
@@ -84,6 +101,11 @@ const Login = () => {
                     <button type="submit" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">LOGIN</button>
                     </div>
                 </form>
+                <div className={`flex justify-center`}>
+                    <FcGoogle onClick={handleLoginWithGoogle} className={`mx-3 text-3xl cursor-pointer`}></FcGoogle>
+                    <BsFacebook onClick={handleLoginWithFacebook} className={`text-blue-700 mx-3 text-3xl cursor-pointer`}></BsFacebook>
+                    <BsGithub onClick={handleLoginWithGithub} className={`mx-3 text-3xl cursor-pointer`}></BsGithub>
+                </div>
                 </div>
             </section>
         </>
