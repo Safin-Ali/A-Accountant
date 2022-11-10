@@ -3,7 +3,7 @@ import { ViewImg } from '../../components/row-card/RowCard';
 
 const ServiceDetailsCard = ({data,visibleModal}) => {
 
-    const {service_name,service_des,_id,rating,service_thumb} = data;
+    const {service_name,service_des,_id,price,service_thumb} = data;
 
     return (
         <section className={`w-[95%] lg:w-2/3 mx-auto border-2 shadow-lg rounded-lg`}>
