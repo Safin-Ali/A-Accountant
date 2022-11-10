@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewCard = ({data}) => {
-    const {feedbackText,serviceId,userEmail,userImg,userName,_id} = data;
+    const {feedbackText,userEmail,userImg} = data;
     return (
         <div className={`flex flex-col lg:flex-row w-[80%] my-5 justify-center items-center bg-zinc-100 shadow-sm gap-10 lg:w-10/12 mx-auto rounded-xl border p-10`}>
             {/* User Profile Image */}

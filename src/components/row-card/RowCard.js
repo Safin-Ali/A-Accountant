@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import DetailsBtn from '../button/DetailsBtn';
-import LoadingAnim from '../spinner/LoadingAnim';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
@@ -16,7 +15,7 @@ export function ViewImg ({imgLink}) {
 }
 
 const RowCard = ({data,boolean}) => {
-    const {service_name,service_des,_id,price,rating,service_thumb} = data;
+    const {service_name,service_des,price,service_thumb} = data;
     return(
         <div className={`flex flex-col lg:flex-row sm:w-[70%] my-7 rounded-lg items-center border w-[90%] shadow-md lg:w-9/12 mx-auto`}>
     {/* Services Thumb */}

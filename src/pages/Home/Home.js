@@ -8,7 +8,6 @@ import { AuthData } from '../../context/AuthContext';
 import CircleBox from '../../components/circle-box/CircleBox';
 import { useLoaderData } from 'react-router-dom';
 import Footer from '../../components/footer/Footer';
-import Navbar from '../../components/Navbar/Navbar';
 
 const Home = () => {
 

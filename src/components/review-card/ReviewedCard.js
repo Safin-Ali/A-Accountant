@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import ReviewCard from './ReviewCard';
 import {FaTrash} from 'react-icons/fa'
 import {FiEdit} from 'react-icons/fi'
 
 function ReviwedcardCompo ({data,reviewData,toggleModal,deleteReview}) {
-    const {service_name,service_thumb} = data;
+    const {service_thumb} = data;
     return(
         <div className={`border rounded-xl bg-zinc-200 w-[85%] 2xl:w-2/3 mx-auto relative shadow-md`}>
             <div>
@@ -24,7 +23,7 @@ function ReviwedcardCompo ({data,reviewData,toggleModal,deleteReview}) {
 }
 
 function ReviewData ({data}) {
-    const {feedbackText,serviceId,userEmail,userImg,userName,_id} = data;
+    const {feedbackText,userEmail,userImg} = data;
     return (
         <div className={`px-5`}>
             {/* User Profile Image */}

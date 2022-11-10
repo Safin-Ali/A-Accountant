@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import SubmitBtn from './SubmitBtn';
 
 const DetailsBtn = ({text,data}) => {
     const navigate = useNavigate();
