@@ -44,7 +44,7 @@ const CarouselBanner = () => {
         return new Promise((res,rej)=>{
             setTimeout(()=>{
                 res(updateStyle())
-            },2500)
+            },2000)
         })
     }
 
@@ -54,7 +54,7 @@ const CarouselBanner = () => {
     },[i])
 
      return (
-        <div className={`w-1/2 flex overflow-hidden mx-auto relative`} id='imgContainer'>
+        <div className={`w-8/12 border rounded-lg flex overflow-hidden mx-auto relative`} id='imgContainer'>
             {
                 banners?.banner.map((img,idx) => <img key={idx} style={{left: `${idx*100}%`}} name={`carousel-items`} src={img} alt="Banner" className={`rounded-lg w-full`}  />)
             }
