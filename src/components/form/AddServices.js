@@ -60,7 +60,7 @@ const AddServices = () => {
         <section>
             <h1 className={`text-3xl text-center font-semibold`}>Add New Service</h1>
                 <form onSubmit={handleAddService}>
-                    <div className={`grid grid-cols-2 mx-[5%]`}>
+                    <div className={`grid grid-cols-1 mx-[5%]`}>
                         <div className={`my-5 text-center`}>
                             <input type="text" className={`border focus:outline-purple-600 p-5 rounded-md w-[90%]`} name={`serviceName`} placeholder={`Service Name`} required/>
                         </div>

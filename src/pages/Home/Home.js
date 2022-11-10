@@ -23,7 +23,7 @@ const Home = () => {
         return prePrice+curPrice.price;
       }, 0);
     const totalRate = allServicesCount?.reduce((prePrice, curPrice) => {
-        return prePrice+curPrice.rating;
+        return parseFloat(prePrice+curPrice.rating);
       }, 0);
 
     // get 3 services data

@@ -72,9 +72,9 @@ const ReviewForm = ({data,visibleModal,setReviewDT}) => {
         )
     }
     return(
-        <section className={`absolute w-[60%] rounded-lg min-h-[calc(100vh-20vh)] max-h-[calc(100vh-20vh)] top-1/2 left-1/2 bg-slate-200 p-10 -translate-x-1/2 -translate-y-1/2`}>
+        <section className={`absolute w-[60%] rounded-lg min-h-[calc(100vh-20vh)] top-1/2 left-1/2 bg-slate-200 p-10 -translate-x-1/2 -translate-y-1/2`}>
             <div className={`flex justify-between items-center`}>
-            <h1 className={`text-3xl capitalize font-medium`}>Please Login First! Then try Agin</h1>
+            <h1 className={`lg:text-3xl capitalize font-medium`}>Please Login First! Then try Agin</h1>
             <GrClose onClick={visibleModal} className={`text-2xl cursor-pointer`}></GrClose>
             </div>
             <Link className={`flex mb-10 text-3xl text-purple-600 underline justify-center min-h-screen items-center`} to={`/login`}>Login</Link>
