@@ -22,7 +22,7 @@ const Navbar = () => {
         </div>
 
         {/* User Profile And Route NavLink } */}
-        <div className={`flex flex-col lg:flex-row justify-center sm:text-base items-center`}>
+        <div className={`flex flex-col lg:flex-row mt-2 lg:my-0 justify-center sm:text-base items-center`}>
           <div className={`md:mr-10`}>
               {userData?.email && <Link to={`/my-review`} className={`inline-block font-medium mx-3`}>My Reviews</Link>}
               {userData?.email && <Link to={`/add-service`} className={`inline-block font-medium mx-3`}>Add Services</Link>}

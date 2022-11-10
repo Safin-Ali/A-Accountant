@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import './carousel-anim.css';
-
 const CarouselBanner = () => {
 
     const [banners,setBanners] = useState(null);
