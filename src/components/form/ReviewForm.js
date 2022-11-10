@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import {MdRateReview} from 'react-icons/md';
 import {GrClose} from 'react-icons/gr';
 import { AuthData } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
