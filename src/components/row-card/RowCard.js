@@ -26,7 +26,7 @@ const RowCard = ({data,boolean}) => {
     {/* Services Content */}
     <div className={`flex px-2 lg:px-0 my-2 lg:my-0 items-center flex-col text-center`}>
         <h5 className={`mb-2 text-base md:text-xl lg:text-2xl font-bold tracking-tight capitalize`}>{service_name}</h5>
-        <p className={`my-0.5`}><strong>Price: ${price}</strong></p>
+        <p className={`my-0.5`}><strong>Price: ${price === null ? 0 : price}</strong></p>
         <p className={`mb-3`}>{service_des.slice(0,100)}</p>
         <div className={boolean ? 'block' : 'hidden'}>
             <DetailsBtn text={`Details`} data={data}></DetailsBtn>
