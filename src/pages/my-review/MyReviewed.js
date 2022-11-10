@@ -83,6 +83,7 @@ const MyReviewed = () => {
         form.reset()
     }
 
+    // Delete Reviews
     function deleteReview (data) {
         const {userEmail,serviceId} = data;
         fetch(`https://a-accountant.vercel.app/review?userEmail=${userEmail}&serviceId=${serviceId}`,{

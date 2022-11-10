@@ -1,12 +1,26 @@
 import React, { useContext } from 'react';
 import { AuthData } from '../../context/AuthContext';
 import SubmitBtn from '../button/SubmitBtn';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddServices = () => {
 
     const {userData} = useContext(AuthData);
 
     const {displayName,email} = userData;
+
+        // Toast
+        const notify = (text) => toast.success(text, {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
 
     const existEncryptToken = localStorage.getItem('jwt-token');
 
@@ -21,7 +35,9 @@ const AddServices = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log('Success:', data);
+            if(data.acknowledged) {
+                notify('Services Added Successful')
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -65,6 +81,7 @@ const AddServices = () => {
                         </div>
                     </div>
                 </form>
+                <ToastContainer/>
         </section>
     );
 };
