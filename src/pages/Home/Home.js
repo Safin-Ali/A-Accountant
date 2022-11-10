@@ -19,10 +19,10 @@ const Home = () => {
 
     // get total service price and rate
     const totalPrice = allServicesCount?.reduce((prePrice, curPrice) => {
-        return prePrice+curPrice.price;
+        return parseInt(prePrice+curPrice.price);
       }, 0);
     const totalRate = allServicesCount?.reduce((prePrice, curPrice) => {
-        return parseFloat(prePrice+curPrice.rating);
+        return parseInt(prePrice+curPrice.rating);
       }, 0);
 
     // get 3 services data
@@ -55,7 +55,7 @@ const Home = () => {
             <div className={`w-[100%] md:w-[80%] text-center mx-auto my-5`}>
             <CircleBox count={allServicesCount?.length || 0} text='Services'></CircleBox>
             <CircleBox count={totalPrice} text='Price'></CircleBox>
-            <CircleBox count={totalRate.toFixed(2)} text='Rate'></CircleBox>
+            <CircleBox count={totalRate} text='Rate'></CircleBox>
             </div>
 
             <div className={`mt-10 container mx-auto`}>
