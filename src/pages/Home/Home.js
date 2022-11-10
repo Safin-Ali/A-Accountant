@@ -35,7 +35,9 @@ const Home = () => {
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <CarouselBanner></CarouselBanner>
+            <>
+                <CarouselBanner key={1}></CarouselBanner>
+            </>
             <div className={`mt-10 container mx-auto`}>
                 {
                     srvcData?.data.map(elm => <RowCard key={elm._id} data={elm} boolean={true}></RowCard>)
