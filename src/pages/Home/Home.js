@@ -16,6 +16,14 @@ const Home = () => {
     // get all services count number
     const allServicesCount = useLoaderData();
 
+    // get total service price and rate
+    const totalPrice = allServicesCount?.reduce((prePrice, curPrice) => {
+        return prePrice+curPrice.price;
+      }, 0);
+    const totalRate = allServicesCount?.reduce((prePrice, curPrice) => {
+        return prePrice+curPrice.rating;
+      }, 0);
+
     // get 3 services data
     const[srvcData,setSrvcData] = useState(null);
     useEffect(()=>{
@@ -45,7 +53,8 @@ const Home = () => {
             </>
             <div className={`w-[100%] md:w-[80%] text-center mx-auto my-5`}>
             <CircleBox count={allServicesCount?.length || 0} text='Services'></CircleBox>
-            <CircleBox count={12} text='Price'></CircleBox>
+            <CircleBox count={totalPrice} text='Price'></CircleBox>
+            <CircleBox count={totalRate.toFixed(2)} text='Rate'></CircleBox>
             </div>
 
             <div className={`mt-10 container mx-auto`}>

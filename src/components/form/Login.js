@@ -15,18 +15,24 @@ const Login = () => {
 
     function handleLoginWithGoogle () {
         signWithGoogle()
-        .then(res => res.json())
-        .then(data => console.log(data))
+        .then(res => {
+            return jwtToken(res?.user.email)
+        })
+        .catch(err => console.log(err))
     }
     function handleLoginWithGithub () {
         signWithGithub()
-        .then(res => res.json())
-        .then(data => console.log(data))
+        .then(res => {
+            return jwtToken(res?.user.email)
+        })
+        .catch(err => console.log(err))
     }
     function handleLoginWithFacebook () {
         signWithFacebook()
-        .then(res => res.json())
-        .then(data => console.log(data))
+        .then(res => {
+            return jwtToken(res?.user.email)
+        })
+        .catch(err => console.log(err))
     }
 
     // Send Email And Get JWT Encrypt Token
