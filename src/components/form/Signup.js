@@ -113,7 +113,7 @@ const Signup = () => {
         <>
             <Helmet><title>Signup</title></Helmet>
             <section className={`flex justify-center min-h-screen h-full items-center`}>
-                <div className={`flex justify-center items-center gap-x-10`}>
+                <div className={`flex mx-4 sm:mx-0 justify-center items-center gap-x-10`}>
                     <div className={`hidden md:w-1/2 md:block`}>
                         <img className={`rounded-lg`} src={signUpImg} alt="Signup Banner" />
                     </div>
