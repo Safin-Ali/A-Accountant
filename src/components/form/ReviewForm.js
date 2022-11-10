@@ -44,7 +44,7 @@ const ReviewForm = ({data,visibleModal,setReviewDT}) => {
     }
     if(userData?.email){
         return(
-            <section className={`absolute w-[90%] lg:w-[60%] rounded-lg top-1/2 left-1/2 p-5 bg-slate-200 lg:p-10 -translate-x-1/2 -translate-y-1/2 transform`}>
+            <section className={`absolute w-[90%] lg:w-[60%] rounded-lg top-1/2 left-1/2 p-5 bg-[#F7F7F7] drop-shadow-md lg:p-10 -translate-x-1/2 -translate-y-1/2 transform`}>
             <div className={`flex justify-between items-center`}>
             <h4 className={`text-3xl`}>Please Give Me Feedback!</h4>
             <GrClose onClick={visibleModal} className={`text-2xl cursor-pointer`}></GrClose>
@@ -72,12 +72,12 @@ const ReviewForm = ({data,visibleModal,setReviewDT}) => {
         )
     }
     return(
-        <section className={`absolute w-[60%] rounded-lg min-h-[calc(100vh-20vh)] top-1/2 left-1/2 bg-slate-200 p-10 -translate-x-1/2 -translate-y-1/2`}>
+        <section className={`absolute w-[80%] lg:w-[60%] transform rounded-lg top-1/2 left-1/2 bg-[#F7F7F7] drop-shadow-md p-10 -translate-x-1/2 -translate-y-1/2`}>
             <div className={`flex justify-between items-center`}>
-            <h1 className={`lg:text-3xl capitalize font-medium`}>Please Login First! Then try Agin</h1>
+            <h1 className={`lg:text-3xl capitalize font-medium`}>Please Login First! Then try Again</h1>
             <GrClose onClick={visibleModal} className={`text-2xl cursor-pointer`}></GrClose>
             </div>
-            <Link className={`flex mb-10 text-3xl text-purple-600 underline justify-center min-h-screen items-center`} to={`/login`}>Login</Link>
+            <Link className={`flex mb-10 text-3xl text-purple-600 underline justify-center min-h-[20vh] items-center`} to={`/login`}>Login</Link>
         </section>
     )
 };

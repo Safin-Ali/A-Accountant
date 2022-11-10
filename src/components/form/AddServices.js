@@ -60,21 +60,21 @@ const AddServices = () => {
         <section>
             <h1 className={`text-3xl text-center font-semibold`}>Add New Service</h1>
                 <form onSubmit={handleAddService}>
-                    <div className={`grid grid-cols-1 mx-[5%]`}>
-                        <div className={`my-5 text-center`}>
+                    <div className={`grid grid-cols-2 mx-[5%]`}>
+                        <div className={`my-5 col-span-2 md:col-span-1 text-center`}>
                             <input type="text" className={`border focus:outline-purple-600 p-5 rounded-md w-[90%]`} name={`serviceName`} placeholder={`Service Name`} required/>
                         </div>
-                        <div className={`my-5 text-center`}>
+                        <div className={`my-5 col-span-2 md:col-span-1 text-center`}>
                             <input type="number" className={`border focus:outline-purple-600 p-5 rounded-md w-[90%]`} name={`servicePrice`} placeholder={`Service Price`}/>
                         </div>
-                        <div className={`my-5 text-center`}>
+                        <div className={`my-5 col-span-2 md:col-span-1 text-center`}>
                             <input type="text" className={`border focus:outline-purple-600 p-5 rounded-md w-[90%]`} name={`serviceImg`} placeholder={`Service Image Link`} required/>
                         </div>
-                        <div className={`my-5 text-center`}>
+                        <div className={`my-5 col-span-2 md:col-span-1 text-center`}>
                             <input type="number" className={`border focus:outline-purple-600 p-5 rounded-md w-[90%]`} name={`servicerate`} placeholder={`Service Rating`}/>
                         </div>
-                        <div className={`my-5 text-center col-span-2`}>
-                            <textarea className={`border focus:outline-purple-600 p-5 rounded-md w-[70%]`} placeholder={`Service Description`} name="serviceDes" rows="10" required={true}></textarea>
+                        <div className={`my-5 col-span-2 text-center col-span-2`}>
+                            <textarea className={`border focus:outline-purple-600 p-5 rounded-md w-[90%] lg:w-[70%]`} placeholder={`Service Description`} name="serviceDes" rows="10" required={true}></textarea>
                         </div>
                         <div className={`text-center col-span-2`}>
                             <SubmitBtn text={`Add Service`}></SubmitBtn>
