@@ -24,9 +24,9 @@ const Navbar = () => {
         {/* User Profile And Route NavLink } */}
         <div className={`flex items-center`}>
           <div className={`mr-10`}>
-              {userData?.email && <Link to={`/my-review`} className={`inline-block mx-3`}>My Reviews</Link>}
-              {userData?.email && <Link to={`/add-service`} className={`inline-block mx-3`}>Add Services</Link>}
-            <Link to={'/blog'}>Blog</Link>
+              {userData?.email && <Link to={`/my-review`} className={`inline-block font-medium mx-3`}>My Reviews</Link>}
+              {userData?.email && <Link to={`/add-service`} className={`inline-block font-medium mx-3`}>Add Services</Link>}
+            <Link to={'/blog'} className={`inline-block font-medium mx-3`}>Blog</Link>
           </div>
           {
             userData?.email && <RiUserSharedFill title={userData.displayName} onClick={handleLogOut} className={`text-2xl cursor-pointer`}></RiUserSharedFill>
