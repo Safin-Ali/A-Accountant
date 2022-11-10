@@ -5,10 +5,16 @@ import RowCard from '../../components/row-card/RowCard';
 import LoadingAnim from '../../components/spinner/LoadingAnim';
 import { Helmet } from 'react-helmet';
 import { AuthData } from '../../context/AuthContext';
+import CircleBox from '../../components/circle-box/CircleBox';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
 
+    // get user authentication data
     const {userData} = useContext(AuthData);
+
+    // get all services count number
+    const allServicesCount = useLoaderData();
 
     // get 3 services data
     const[srvcData,setSrvcData] = useState(null);
@@ -24,7 +30,6 @@ const Home = () => {
     },[userData])
 
     // Get User Added Services
-
     function userAddedService () {
         return srvcData?.userAddedDT.map(elm => <RowCard key={elm._id} data={elm} boolean={true}></RowCard>)
         || <div className={`text-center mb-10`}> <LoadingAnim></LoadingAnim> </div>
@@ -36,8 +41,13 @@ const Home = () => {
                 <title>Home</title>
             </Helmet>
             <>
-                <CarouselBanner key={1}></CarouselBanner>
+                <CarouselBanner></CarouselBanner>
             </>
+            <div className={`w-[100%] md:w-[80%] text-center mx-auto my-5`}>
+            <CircleBox count={allServicesCount?.length || 0} text='Services'></CircleBox>
+            <CircleBox count={12} text='Price'></CircleBox>
+            </div>
+
             <div className={`mt-10 container mx-auto`}>
                 {
                     srvcData?.data.map(elm => <RowCard key={elm._id} data={elm} boolean={true}></RowCard>)

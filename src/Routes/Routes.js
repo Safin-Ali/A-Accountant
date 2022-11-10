@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import AddServices from '../components/form/AddServices';
@@ -14,7 +15,7 @@ import Services from '../pages/services/Services';
 const router = createBrowserRouter([
     // Main Page
     {path: '/', element: <Main></Main>, children:[
-        {path: `/`, element:<Home></Home> },
+        {path: `/`, loader: async()=>fetch('https://a-accountant.vercel.app/services'), element:<Home></Home> },
 
          // Services Page
         {path: `/services`, loader: async ()=> fetch(`https://a-accountant.vercel.app/services`), element:<Services></Services> },
