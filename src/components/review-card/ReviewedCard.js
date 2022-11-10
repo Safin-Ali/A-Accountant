@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import ReviewCard from './ReviewCard';
 import {FaTrash} from 'react-icons/fa'
 import {FiEdit} from 'react-icons/fi'
-import { confirmPasswordReset } from 'firebase/auth';
 
 function ReviwedcardCompo ({data,reviewData,toggleModal,deleteReview}) {
     const {service_name,service_thumb} = data;

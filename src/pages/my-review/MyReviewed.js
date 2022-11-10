@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet';
 import UpdateReviewForm from '../../components/form/UpdateReviewForm';
 import '../../components/review-card/ReviewCard.css';
 import LoadingAnim from '../../components/spinner/LoadingAnim';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyReviewed = () => {
 
@@ -30,11 +32,22 @@ const MyReviewed = () => {
 
     // Toggle Update Form Modal
     const [modal,setModal] = useState(false);
-
     function toggleModal (id) {
         setModal(!modal)
         !modal ? setReviewServiceID(id) : setReviewServiceID()
     }
+
+    // Toast
+    const notify = (text) => toast.success(text, {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
 
     function updateAPIData (updateData) {
         fetch(`https://a-accountant.vercel.app/review?id=${reviewServiceID}`, {
@@ -45,13 +58,17 @@ const MyReviewed = () => {
             body: JSON.stringify(updateData),
             })
             .then((response) => response.json())
-            .then((data) => {                
-                const currentObj = reviwedServices.filter(elm => elm._id === reviewServiceID);
-                console.log(currentObj)
-                setReviwedServices(currentObj)
-                setCall(!callBack)
-                setModal(!modal)                
-                console.log('Success:', data);
+            .then((data) => {  
+                if(data.acknowledged) {
+                    notify('Update Successful')
+                    const currentObj = reviwedServices.filter(elm => elm._id === reviewServiceID);
+                    console.log(currentObj)
+                    setReviwedServices(currentObj)
+                    setCall(!callBack)
+                    setModal(!modal)
+                    setModal(!modal)                
+                    setModal(!modal)
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -71,12 +88,14 @@ const MyReviewed = () => {
         fetch(`https://a-accountant.vercel.app/review?userEmail=${userEmail}&serviceId=${serviceId}`,{
              method: 'DELETE' 
             })
-        .then(res => {
-            const remaining = reviwedServices.filter( elm => elm.serviceId !== serviceId);
-            setReviwedServices(remaining)
-            return res.json()
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged) {
+                const remaining = reviwedServices.filter( elm => elm.serviceId !== serviceId);
+                setReviwedServices(remaining)
+                notify('Review Delete Successful')
+            }
         })
-        .then(data => console.log(data))
     }
 
     return (
@@ -96,6 +115,7 @@ const MyReviewed = () => {
                 {
                     modal && <UpdateReviewForm handleUpdateData={handleUpdateData} toggleModal={toggleModal}></UpdateReviewForm>
                 }
+                <ToastContainer/>
             </section>
         </>
     );
