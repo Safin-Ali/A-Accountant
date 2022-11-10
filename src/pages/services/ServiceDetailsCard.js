@@ -6,7 +6,7 @@ const ServiceDetailsCard = ({data,visibleModal}) => {
     const {service_name,service_des,_id,rating,service_thumb} = data;
 
     return (
-        <section className={`w-2/3 mx-auto border-2 shadow-lg rounded-lg`}>
+        <section className={`w-[95%] lg:w-2/3 mx-auto border-2 shadow-lg rounded-lg`}>
             <div className={`rounded-t-lg cursor-pointer`}>
                 <ViewImg imgLink={service_thumb}></ViewImg>
             </div>

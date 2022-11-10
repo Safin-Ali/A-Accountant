@@ -38,11 +38,11 @@ const Service = () => {
         <Helmet>
             <title>Service</title>
         </Helmet>
-            <section className={`grid grid-cols-2 justify-center items-center`}>
+            <section className={`grid grid-cols-1 md:grid-cols-2 justify-center items-center`}>
                     {
                         srvcDT && <ServiceDetailsCard data={srvcDT} visibleModal={visibleModal}></ServiceDetailsCard>
                     }
-                <div className={`max-h-screen overflow-y-scroll hide-scrollbar border-l-2 border-l-purple-600`}>
+                <div className={`max-h-screen md:overflow-y-scroll hide-scrollbar lg:border-l-2 lg:border-l-purple-600`}>
                     {
                         reviewDT.length === 0 ? <p className={`text-center text-2xl`}>No Review</p> : reviewDT.map((elm,idx) => <ReviewCard key={idx} data={elm}></ReviewCard>)
                     }
