@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 const CarouselBanner = () => {
 
+    // state banners array
     const [banners,setBanners] = useState(null);
 
+    // banner index count
     const[i,setI] = useState(0);
-    const [direction,setDirection] = useState(false);
 
+    // set common class everyslide items
     function slide () {
         const selCaroselItems = document.getElementsByName('carousel-items');
         selCaroselItems.forEach(elm => {
@@ -17,39 +19,39 @@ const CarouselBanner = () => {
         })
     }
 
+    // get banner images from server
     useEffect(()=>{
         fetch('https://a-accountant.vercel.app/banner')
         .then(res => res.json())
         .then(data => setBanners(data));
     },[]);
 
+
+    // added animation classname
     function updateStyle () { 
-        if(direction){
-            setI(i - 1)
+        if(i === banners?.banner.length-1){
+            setI(0)
             slide();
-            console.log('one',i)
         }
         else{
             slide();
             setI(i+1)
-            console.log('two',i)
         }
     }
 
+    // promises function
     function slideAnim(){
         return new Promise((res,rej)=>{
             setTimeout(()=>{
                 res(updateStyle())
-            },1500)
+            },2500)
         })
     }
 
     // change banner
-    // useEffect(()=>{
-    //     i === 0 && setDirection(false)
-    //     i === banners?.banner.length-1 && setDirection(true)
-    //     slideAnim()
-    // },[i])
+    useEffect(()=>{
+        slideAnim()
+    },[i])
 
      return (
         <div className={`w-1/2 flex overflow-hidden mx-auto relative`} id='imgContainer'>
